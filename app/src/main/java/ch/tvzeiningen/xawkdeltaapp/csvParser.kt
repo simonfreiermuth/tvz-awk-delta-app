@@ -2,13 +2,14 @@ package ch.tvzeiningen.xawkdeltaapp
 
 import androidx.compose.ui.text.toLowerCase
 import ch.tvzeiningen.xawkdeltaapp.model.Person
+import ch.tvzeiningen.xawkdeltaapp.model.Training
 import java.io.InputStream
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 
-fun parse(inStream: InputStream) {
+fun parse(inStream: InputStream): List<Training> {
     val reader = inStream.bufferedReader()
 
     reader.readLine() // skip empty line
@@ -18,19 +19,35 @@ fun parse(inStream: InputStream) {
     val dates = listOf(reader.readLine(), reader.readLine())
         .dateList()
 
+    val trainings = mutableMapOf<LocalDate, Training>()
+
+    dates.forEach { date ->
+        trainings.put(date, Training(date))
+    }
+
     reader
         .takeUnless { it.readLine().normalize().person() == null }
         ?.forEachLine { line ->
             val normalized = line.normalize()
             val person = normalized.person() ?: return@forEachLine
 
-
+            normalized
+                .registrationList()
+                .forEachIndexed { index, isRegistred ->
+                    if (isRegistred) {
+                        val date = dates[index] // map bool to training date
+                        trainings[date]?.people?.add(person) // add person to training
+                    }
+                }
         }
 
+    // TODO: read last line to verify parsing
+
+    return trainings.values.toList()
 }
 
 fun List<String>.dateList(): List<LocalDate> {
-    if (this.size < 2 ) error("list must contain months and days")
+    if (this.size < 2) error("list must contain months and days")
 
     val dateFormatterMonths = DateTimeFormatter
         .ofPattern("d MMMM u")

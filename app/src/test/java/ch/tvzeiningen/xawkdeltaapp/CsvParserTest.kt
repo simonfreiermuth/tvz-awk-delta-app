@@ -1,6 +1,7 @@
 package ch.tvzeiningen.xawkdeltaapp
 
 import ch.tvzeiningen.xawkdeltaapp.model.Person
+import ch.tvzeiningen.xawkdeltaapp.model.Training
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -8,6 +9,42 @@ import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 class CsvParserTest {
+
+    private val CH_DATE_FORMATTER = DateTimeFormatter.ofPattern("dd.M.uuuu")
+
+    @Test
+    fun testParse() {
+        // given
+        val res = CsvParserTest::class.java.getResource("/xoyondo.csv")
+
+        // when
+        val trainings = res?.openStream()?.use { input -> parse(input) } ?: return fail("Could not read open test data")
+
+        val simon = Person("Simon")
+        val training1 = Training(LocalDate.parse("02.11.2022", CH_DATE_FORMATTER))
+        val training14 = Training(LocalDate.parse("23.12.2022", CH_DATE_FORMATTER))
+
+        // then
+        assertEquals(14, trainings.size)
+        assertNotNull(
+            trainings.firstOrNull() { t -> t.date == training1.date }
+        )
+        assertNotNull(
+            trainings.firstOrNull() { t -> t.date == training14.date }
+        )
+
+        assertTrue(
+            trainings
+                .first { t -> t.date == training1.date }
+                .people.contains(simon)
+        )
+        assertEquals(
+            12,
+            trainings
+                .first { t -> t.date == training14.date }
+                .people.size
+        )
+    }
 
     @Test
     fun testDataList() {
@@ -19,17 +56,16 @@ class CsvParserTest {
             "","Wed 02 ","Wed 09 ","Wed 16 ","Fri 18 ","Wed 23 ","Fri 25 ","Wed 30 ","Fri 02 ","Wed 07 "
         """.trimIndent()
 
-        val dateFormatter = DateTimeFormatter.ofPattern("dd.M.uuuu")
         val expOut = listOf(
-            LocalDate.parse("02.11.2022", dateFormatter),
-            LocalDate.parse("09.11.2022", dateFormatter),
-            LocalDate.parse("16.11.2022", dateFormatter),
-            LocalDate.parse("18.11.2022", dateFormatter),
-            LocalDate.parse("23.11.2022", dateFormatter),
-            LocalDate.parse("25.11.2022", dateFormatter),
-            LocalDate.parse("30.11.2022", dateFormatter),
-            LocalDate.parse("02.12.2022", dateFormatter),
-            LocalDate.parse("07.12.2022", dateFormatter)
+            LocalDate.parse("02.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("09.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("16.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("18.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("23.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("25.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("30.11.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("02.12.2022", CH_DATE_FORMATTER),
+            LocalDate.parse("07.12.2022", CH_DATE_FORMATTER)
         )
 
         // when
@@ -85,6 +121,7 @@ class CsvParserTest {
         )
         assertNull(noPerson)
     }
+
     @Test
     fun testRegistrationList() {
         // given
