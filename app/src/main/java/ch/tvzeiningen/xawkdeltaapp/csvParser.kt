@@ -1,16 +1,16 @@
 package ch.tvzeiningen.xawkdeltaapp
 
-import androidx.compose.ui.text.toLowerCase
 import ch.tvzeiningen.xawkdeltaapp.model.Person
 import ch.tvzeiningen.xawkdeltaapp.model.Training
 import java.io.InputStream
+import java.nio.charset.StandardCharsets
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
 
 
 fun parse(inStream: InputStream): List<Training> {
-    val reader = inStream.bufferedReader()
+    val reader = inStream.bufferedReader(StandardCharsets.UTF_8)
 
     reader.readLine() // skip empty line
     reader.readLine() // skip title line
@@ -43,6 +43,7 @@ fun parse(inStream: InputStream): List<Training> {
 
     // TODO: read last line to verify parsing
 
+    reader.close()
     return trainings.values.toList()
 }
 
