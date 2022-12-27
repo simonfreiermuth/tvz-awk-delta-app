@@ -13,31 +13,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import ch.tvzeiningen.xawkdeltaapp.ui.theme.XawkDeltaAppTheme
 
 class MainActivity : ComponentActivity() {
+    private lateinit var app: AwkApp
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        app = AwkApp
+
+        app.initialize(activity = this)
+
         setContent {
-            XawkDeltaAppTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+            app.CreateUI()
         }
     }
-}
 
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    XawkDeltaAppTheme {
-        Greeting("Android")
+    override fun onStop() {
+        super.onStop()
+        app.onStop(activity = this)
     }
 }
