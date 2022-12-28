@@ -1,10 +1,7 @@
 package ch.tvzeiningen.xawkdeltaapp.ui.screens.common
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.MediumTopAppBar
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -14,7 +11,7 @@ import ch.tvzeiningen.xawkdeltaapp.AppModel
 @Composable
 fun BaseScreen(
     model: AppModel,
-    topBar: @Composable (model: AppModel) ->Unit = { TopBar(model) },
+    topBar: @Composable (model: AppModel) -> Unit = { TopBar(model) },
     bottomBar: @Composable (model: AppModel) -> Unit = {},
     modifier: Modifier = Modifier,
     content: @Composable (PaddingValues) -> Unit,
@@ -27,7 +24,12 @@ fun BaseScreen(
         ) { padding ->
             Box(
                 Modifier
-                    .padding(16.dp)
+                    .padding(
+                        top =    64.dp,
+                        // start =  16.dp,
+                        // end =    16.dp,
+                        // bottom = 16.dp
+                    )
             ) {
                 content(padding)
             }
@@ -35,20 +37,12 @@ fun BaseScreen(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun TopBar(model: AppModel) {
     with(model) {
-        MediumTopAppBar(
-            title = {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(end = 8.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(text = currentScreen.toString())
-                }
-            }
+        CenterAlignedTopAppBar(
+            title = { Text(text = currentScreen.toString()) }
         )
     }
 }

@@ -11,6 +11,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
+import java.time.LocalDate
 
 object AppModel {
     private val modelScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -34,6 +35,8 @@ object AppModel {
         modelScope.launch {
             trainings.clear()
             trainings.addAll(trainingsConnector.getTrainings())
+            trainings.add(Training(LocalDate.now()))
+            trainings.add(Training(LocalDate.parse("2022-11-20")))
             loadingTrainings = false
         }
     }
