@@ -1,11 +1,13 @@
 package ch.tvzeiningen.xawkdeltaapp.ui.screens.common
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ch.tvzeiningen.xawkdeltaapp.AppModel
+import ch.tvzeiningen.xawkdeltaapp.ui.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -14,9 +16,13 @@ fun BaseScreen(
     topBar: @Composable (model: AppModel) -> Unit = { TopBar(model) },
     bottomBar: @Composable (model: AppModel) -> Unit = {},
     modifier: Modifier = Modifier,
-    content: @Composable (PaddingValues) -> Unit,
+    previousScreen: Screen? = null,
+    content: @Composable (PaddingValues) -> Unit
 ) {
     with(model) {
+        BackHandler(enabled = previousScreen != null) {
+            if (previousScreen != null) currentScreen = previousScreen
+        }
         Scaffold(
             modifier = modifier,
             topBar = { topBar(model) },
