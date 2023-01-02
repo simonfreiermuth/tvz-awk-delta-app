@@ -25,21 +25,22 @@ fun parse(inStream: InputStream): List<Training> {
         trainings.put(date, Training(date))
     }
 
-    reader
-        .takeUnless { it.readLine().normalize().person() == null }
-        ?.forEachLine { line ->
-            val normalized = line.normalize()
-            val person = normalized.person() ?: return@forEachLine
+    reader.forEachLine { line ->
+        val normalized = line.normalize()
+        val person = normalized.person() ?: return@forEachLine
 
-            normalized
-                .registrationList()
-                .forEachIndexed { index, isRegistred ->
-                    if (isRegistred) {
-                        val date = dates[index] // map bool to training date
-                        trainings[date]?.people?.add(person) // add person to training
-                    }
+        normalized
+            .registrationList()
+            .forEachIndexed { index, isRegistered ->
+                val date = dates[index] // map bool to training date
+                // add person to training
+                if (isRegistered) {
+                    trainings[date]?.registered?.add(person)
+                } else {
+                    trainings[date]?.unregistered?.add(person)
                 }
-        }
+            }
+    }
 
     // TODO: read last line to verify parsing
 

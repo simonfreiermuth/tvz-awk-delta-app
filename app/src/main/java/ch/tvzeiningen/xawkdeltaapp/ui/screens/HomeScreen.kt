@@ -88,7 +88,7 @@ private fun TrainingsList(model: AppModel) {
                             horizontalArrangement = Arrangement.spacedBy(4.dp)
                         ) {
                             Icon(Icons.Filled.Groups, "")
-                            Text(text = "${training.people.size}")
+                            Text(text = "${training.registered.size}")
                         }
                     }
                 )

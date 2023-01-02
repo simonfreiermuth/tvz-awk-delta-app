@@ -6,7 +6,9 @@ import java.time.format.FormatStyle
 
 data class Training(
     val date: LocalDate,
-    val people: MutableSet<Person> = mutableSetOf()
+    val registered: MutableSet<Person> = mutableSetOf(),
+    val unregistered: MutableSet<Person> = mutableSetOf(),
+    val attendant: MutableSet<Person> = mutableSetOf()
 )
 
 fun Training.dateString(): String =

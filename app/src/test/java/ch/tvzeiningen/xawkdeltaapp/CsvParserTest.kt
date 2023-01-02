@@ -21,6 +21,8 @@ class CsvParserTest {
         val trainings = res?.openStream()?.use { input -> parse(input) } ?: return fail("Could not read open test data")
 
         val simon = Person("Simon")
+        val firstPerson = Person("Denis")
+        val lastPerson = Person("Milena")
         val training1 = Training(LocalDate.parse("02.11.2022", CH_DATE_FORMATTER))
         val training14 = Training(LocalDate.parse("23.12.2022", CH_DATE_FORMATTER))
 
@@ -33,16 +35,38 @@ class CsvParserTest {
             trainings.firstOrNull() { t -> t.date == training14.date }
         )
 
+        // registered
         assertTrue(
             trainings
                 .first { t -> t.date == training1.date }
-                .people.contains(simon)
+                .registered.contains(simon)
         )
         assertEquals(
-            12,
+            11,
             trainings
                 .first { t -> t.date == training14.date }
-                .people.size
+                .registered.size
+        )
+
+        // unregistered
+        assertTrue(
+            trainings
+                .first { t -> t.date == training14.date }
+                .unregistered.contains(simon)
+        )
+        assertEquals(
+            8,
+            trainings
+                .first { t -> t.date == training14.date }
+                .unregistered.size
+        )
+
+        // first and last person in list
+        assertTrue(
+            trainings[0].unregistered.contains(firstPerson)
+        )
+        assertTrue(
+            trainings[0].unregistered.contains(lastPerson)
         )
     }
 

@@ -48,12 +48,12 @@ private fun PeopleList(model: AppModel) {
         ) {
             item {
                 Text(
-                    text = "Angemeldet (${people.size})",
+                    text = "Angemeldet (${registered.size})",
                     style = MaterialTheme.typography.titleMedium
                 )
             }
 
-            items(people.toList()) { person ->
+            items(registered.toList()) { person ->
                 PersonListItem(person)
             }
 
@@ -64,6 +64,9 @@ private fun PeopleList(model: AppModel) {
                 )
             }
 
+            items(unregistered.toList()) { person ->
+                PersonListItem(person)
+            }
         }
     }
 }
