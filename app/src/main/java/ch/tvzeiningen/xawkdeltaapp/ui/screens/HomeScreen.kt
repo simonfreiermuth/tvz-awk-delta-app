@@ -41,7 +41,15 @@ private fun Body(model: AppModel) {
 @Composable
 private fun TrainingsList(model: AppModel) {
     val locale = Resources.getSystem().getConfiguration().getLocales().get(0)
+
     with(model) {
+        if (loadingTrainings) Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            CircularProgressIndicator()
+        }
+
         LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
