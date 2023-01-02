@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -38,6 +39,11 @@ private fun Body(model: AppModel) {
 private fun TopAppBar(model: AppModel) {
     with(model.currentTraining !!) {
         CenterAlignedTopAppBar(
+            navigationIcon = {
+                IconButton(onClick = { AppModel.currentScreen = Screen.HOME }) {
+                    Icon(Icons.Default.ArrowBack, "Back")
+                }
+            },
             title = { Text(text = dateString() )}
         )
     }

@@ -2,6 +2,8 @@ package ch.tvzeiningen.xawkdeltaapp.ui.screens.common
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -31,7 +33,7 @@ fun BaseScreen(
             Box(
                 Modifier
                     .padding(
-                        top =    64.dp,
+                        top = 64.dp,
                         // start =  16.dp,
                         // end =    16.dp,
                         // bottom = 16.dp
@@ -48,7 +50,7 @@ fun BaseScreen(
 private fun TopBar(model: AppModel) {
     with(model) {
         CenterAlignedTopAppBar(
-            title = { Text(text = currentScreen.toString()) }
+            title = { Text(text = "AWK TV Zeiningen") }
         )
     }
 }
