@@ -1,12 +1,16 @@
 package ch.tvzeiningen.xawkdeltaapp.ui.screens
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import ch.tvzeiningen.xawkdeltaapp.AppModel
 import ch.tvzeiningen.xawkdeltaapp.model.Person
 import ch.tvzeiningen.xawkdeltaapp.model.dateString
@@ -54,18 +58,18 @@ private fun PeopleList(model: AppModel) {
             }
 
             items(registered.toList()) { person ->
-                PersonListItem(person)
+                PersonListItem(person, model)
             }
 
             item {
                 Text(
-                    text = "Abgemeldet",
+                    text = "Abgemeldet (${unregistered.size})",
                     style = MaterialTheme.typography.titleMedium
                 )
             }
 
             items(unregistered.toList()) { person ->
-                PersonListItem(person)
+                PersonListItem(person, model)
             }
         }
     }
@@ -73,7 +77,7 @@ private fun PeopleList(model: AppModel) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun PersonListItem(person: Person) {
+private fun PersonListItem(person: Person, model: AppModel) {
     with(person) {
         val initials = person.name
             .split(" ")
@@ -81,9 +85,27 @@ private fun PersonListItem(person: Person) {
             .map { it[0] }
             .joinToString(separator = "") { it.uppercase() }
 
+        var isAttendant by remember {
+            mutableStateOf(model.currentTraining?.attendant?.contains(person) ?: false)
+        }
+
         ListItem(
             leadingContent = { AvatarInitials(text = initials )},
-            headlineText = { Text(text = name) }
+            headlineText = { Text(text = name) },
+            trailingContent = { if (isAttendant) Icon(Icons.Default.Check, "")},
+
+            tonalElevation = if (isAttendant) 8.dp else 0.dp,
+            modifier = Modifier.clickable {
+                if (model.currentTraining?.attendant == null) return@clickable
+
+                if (model.currentTraining!!.attendant.contains(person)) {
+                    model.currentTraining!!.attendant.remove(person)
+                } else {
+                    model.currentTraining!!.attendant.add(person)
+                }
+
+                isAttendant = !isAttendant
+            }
         )
     }
 }
