@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.theme
+package ch.tvzeiningen.awkdeltaapp.ui.theme
 
 import android.app.Activity
 import android.os.Build

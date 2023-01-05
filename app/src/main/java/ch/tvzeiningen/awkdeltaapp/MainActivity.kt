@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp
+package ch.tvzeiningen.awkdeltaapp
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

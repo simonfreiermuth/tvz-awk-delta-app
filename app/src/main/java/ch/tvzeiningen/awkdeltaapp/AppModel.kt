@@ -1,17 +1,16 @@
-package ch.tvzeiningen.xawkdeltaapp
+package ch.tvzeiningen.awkdeltaapp
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
-import ch.tvzeiningen.xawkdeltaapp.data.XoyondoConnector
-import ch.tvzeiningen.xawkdeltaapp.model.Training
-import ch.tvzeiningen.xawkdeltaapp.ui.Screen
+import ch.tvzeiningen.awkdeltaapp.data.XoyondoConnector
+import ch.tvzeiningen.awkdeltaapp.model.Training
+import ch.tvzeiningen.awkdeltaapp.ui.Screen
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import java.time.LocalDate
 
 object AppModel {
     private val modelScope = CoroutineScope(SupervisorJob() + Dispatchers.IO)
@@ -35,8 +34,6 @@ object AppModel {
         modelScope.launch {
             trainings.clear()
             trainings.addAll(trainingsConnector.getTrainings())
-            trainings.add(Training(LocalDate.now()))
-            trainings.add(Training(LocalDate.parse("2022-11-20")))
             loadingTrainings = false
         }
     }

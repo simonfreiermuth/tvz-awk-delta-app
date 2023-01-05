@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.screens.common
+package ch.tvzeiningen.awkdeltaapp.ui.screens.common
 
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.*
@@ -6,8 +6,8 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ch.tvzeiningen.xawkdeltaapp.AppModel
-import ch.tvzeiningen.xawkdeltaapp.ui.Screen
+import ch.tvzeiningen.awkdeltaapp.AppModel
+import ch.tvzeiningen.awkdeltaapp.ui.Screen
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

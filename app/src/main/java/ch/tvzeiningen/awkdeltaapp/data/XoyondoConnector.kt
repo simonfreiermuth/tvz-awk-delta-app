@@ -1,7 +1,7 @@
-package ch.tvzeiningen.xawkdeltaapp.data
+package ch.tvzeiningen.awkdeltaapp.data
 
-import ch.tvzeiningen.xawkdeltaapp.model.Training
-import ch.tvzeiningen.xawkdeltaapp.parse
+import ch.tvzeiningen.awkdeltaapp.model.Training
+import ch.tvzeiningen.awkdeltaapp.parse
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import java.io.IOException

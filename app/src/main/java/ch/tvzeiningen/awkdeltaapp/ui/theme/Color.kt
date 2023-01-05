@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.theme
+package ch.tvzeiningen.awkdeltaapp.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

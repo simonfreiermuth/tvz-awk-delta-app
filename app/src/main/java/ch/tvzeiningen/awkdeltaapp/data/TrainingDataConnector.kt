@@ -1,6 +1,6 @@
-package ch.tvzeiningen.xawkdeltaapp.data
+package ch.tvzeiningen.awkdeltaapp.data
 
-import ch.tvzeiningen.xawkdeltaapp.model.Training
+import ch.tvzeiningen.awkdeltaapp.model.Training
 import java.time.LocalDate
 
 interface TrainingDataConnector {

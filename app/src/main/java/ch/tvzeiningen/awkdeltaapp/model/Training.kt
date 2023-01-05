@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.model
+package ch.tvzeiningen.awkdeltaapp.model
 
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter

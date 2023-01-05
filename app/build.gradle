@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'ch.tvzeiningen.xawkdeltaapp'
+    namespace 'ch.tvzeiningen.awkdeltaapp'
     compileSdk 33
 
     defaultConfig {
-        applicationId "ch.tvzeiningen.xawkdeltaapp"
+        applicationId "ch.tvzeiningen.awkdeltaapp"
         minSdk 29
         targetSdk 32
         versionCode 1

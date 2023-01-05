@@ -1,7 +1,7 @@
-package ch.tvzeiningen.xawkdeltaapp
+package ch.tvzeiningen.awkdeltaapp
 
-import ch.tvzeiningen.xawkdeltaapp.model.Person
-import ch.tvzeiningen.xawkdeltaapp.model.Training
+import ch.tvzeiningen.awkdeltaapp.model.Person
+import ch.tvzeiningen.awkdeltaapp.model.Training
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
 import java.time.LocalDate

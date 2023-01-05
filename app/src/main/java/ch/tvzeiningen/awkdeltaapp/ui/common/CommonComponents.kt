@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.common
+package ch.tvzeiningen.awkdeltaapp.ui.common
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

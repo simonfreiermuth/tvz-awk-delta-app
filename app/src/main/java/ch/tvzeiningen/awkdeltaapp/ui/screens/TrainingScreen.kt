@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.screens
+package ch.tvzeiningen.awkdeltaapp.ui.screens
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -12,12 +12,12 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ch.tvzeiningen.xawkdeltaapp.AppModel
-import ch.tvzeiningen.xawkdeltaapp.model.Person
-import ch.tvzeiningen.xawkdeltaapp.model.dateString
-import ch.tvzeiningen.xawkdeltaapp.ui.Screen
-import ch.tvzeiningen.xawkdeltaapp.ui.common.AvatarInitials
-import ch.tvzeiningen.xawkdeltaapp.ui.screens.common.BaseScreen
+import ch.tvzeiningen.awkdeltaapp.AppModel
+import ch.tvzeiningen.awkdeltaapp.model.Person
+import ch.tvzeiningen.awkdeltaapp.model.dateString
+import ch.tvzeiningen.awkdeltaapp.ui.Screen
+import ch.tvzeiningen.awkdeltaapp.ui.common.AvatarInitials
+import ch.tvzeiningen.awkdeltaapp.ui.screens.common.BaseScreen
 
 @Composable
 fun TrainingScreen(model: AppModel) {

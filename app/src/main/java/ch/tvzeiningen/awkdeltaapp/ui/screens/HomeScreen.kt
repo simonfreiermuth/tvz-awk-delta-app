@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui.screens
+package ch.tvzeiningen.awkdeltaapp.ui.screens
 
 import android.content.res.Resources
 import androidx.compose.foundation.clickable
@@ -12,10 +12,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ch.tvzeiningen.xawkdeltaapp.AppModel
-import ch.tvzeiningen.xawkdeltaapp.ui.Screen
-import ch.tvzeiningen.xawkdeltaapp.ui.common.AvatarInitials
-import ch.tvzeiningen.xawkdeltaapp.ui.screens.common.BaseScreen
+import ch.tvzeiningen.awkdeltaapp.AppModel
+import ch.tvzeiningen.awkdeltaapp.ui.Screen
+import ch.tvzeiningen.awkdeltaapp.ui.common.AvatarInitials
+import ch.tvzeiningen.awkdeltaapp.ui.screens.common.BaseScreen
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.time.format.FormatStyle

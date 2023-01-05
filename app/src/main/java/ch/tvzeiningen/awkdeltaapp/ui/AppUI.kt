@@ -1,11 +1,11 @@
-package ch.tvzeiningen.xawkdeltaapp.ui
+package ch.tvzeiningen.awkdeltaapp.ui
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.runtime.Composable
-import ch.tvzeiningen.xawkdeltaapp.AppModel
-import ch.tvzeiningen.xawkdeltaapp.ui.screens.HomeScreen
-import ch.tvzeiningen.xawkdeltaapp.ui.screens.TrainingScreen
-import ch.tvzeiningen.xawkdeltaapp.ui.theme.AppTheme
+import ch.tvzeiningen.awkdeltaapp.AppModel
+import ch.tvzeiningen.awkdeltaapp.ui.screens.HomeScreen
+import ch.tvzeiningen.awkdeltaapp.ui.screens.TrainingScreen
+import ch.tvzeiningen.awkdeltaapp.ui.theme.AppTheme
 
 @Composable
 fun AppUI(model: AppModel) {

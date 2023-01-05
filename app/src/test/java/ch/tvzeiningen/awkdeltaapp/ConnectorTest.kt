@@ -1,6 +1,6 @@
-package ch.tvzeiningen.xawkdeltaapp
+package ch.tvzeiningen.awkdeltaapp
 
-import ch.tvzeiningen.xawkdeltaapp.data.XoyondoConnector
+import ch.tvzeiningen.awkdeltaapp.data.XoyondoConnector
 import org.junit.Test
 
 /**

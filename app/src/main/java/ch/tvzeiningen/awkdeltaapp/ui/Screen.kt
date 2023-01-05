@@ -1,4 +1,4 @@
-package ch.tvzeiningen.xawkdeltaapp.ui
+package ch.tvzeiningen.awkdeltaapp.ui
 
 enum class Screen {
     HOME,
