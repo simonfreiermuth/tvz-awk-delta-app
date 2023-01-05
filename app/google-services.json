@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "400949699075",
+    "project_id": "tvz-awk-delta-app",
+    "storage_bucket": "tvz-awk-delta-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400949699075:android:8272d7bd797af098b12436",
+        "android_client_info": {
+          "package_name": "ch.tvzeiningen.awkdeltaapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400949699075-0vkaqdjom6mjklir891fvvp8p4a4ggcv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFgtq8hTXToDAhffvc1zgPjCcjQaKWpvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400949699075-0vkaqdjom6mjklir891fvvp8p4a4ggcv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
